@@ -1,0 +1,6 @@
+[flake8]
+ignore =
+    # black formatting related
+    E203,
+    E501,
+    W503

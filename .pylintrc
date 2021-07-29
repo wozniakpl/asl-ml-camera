@@ -1,0 +1,16 @@
+[MASTER]
+load-plugins=pylint.extensions.mccabe
+
+[DESIGN]
+max-complexity=5
+
+[MESSAGES CONTROL]
+disable=
+    missing-module-docstring,
+    missing-function-docstring,
+    missing-class-docstring,
+    fixme,
+    logging-fstring-interpolation,
+    broad-except,
+    no-member,
+    import-error
