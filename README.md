@@ -8,9 +8,12 @@ Clone the repo and call
 
 ```
 pip3 install -e . # to install and call like: asl_ml_camera <args>
-# or call directly
-python3 -m asl_ml_camera <args>
+# or install the required packages and call directly:
+pip3 install -r requirements.txt
+python3 -m asl_ml_camera
 ```
+
+Help should be printed.
 
 Then, download the [training data](https://drive.google.com/drive/folders/1fYZ_ROFbDsHSjQvgSXHGQdRHB8DmzYda?usp=sharing) (I did what I could to integrate this with some Google Drive API but it's just not worth it) and put it in the `artifacts` directory (or however you name it), so it looks like this:
 
@@ -72,3 +75,5 @@ To see the trained classifiers in actions, prepare your USB camera and call:
 ```
 asl_ml_camera -a artifacts --camera
 ```
+
+Close with ESC.
