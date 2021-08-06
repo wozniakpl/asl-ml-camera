@@ -4,18 +4,24 @@ This project uses the camera to translate your hand to ASL letters. Below you ca
 
 # How to use
 
-Clone the repo and call
+Install from the main branch:
+
+```
+pip3 install git+https://github.com/wozniakpl/asl-ml-camera.git
+```
+
+or clone the repo and call:
 
 ```
 pip3 install -e . # to install and call like: asl_ml_camera <args>
 # or install the required packages and call directly:
 pip3 install -r requirements.txt
-python3 -m asl_ml_camera
+python3 -m asl_ml_camera <args>
 ```
 
 With no args, help should be printed. You need to have `ffmpeg` installed. It's used in the `--cut` step, when movie is split to frames.
 
-Then, download the [training data](https://drive.google.com/drive/folders/1fYZ_ROFbDsHSjQvgSXHGQdRHB8DmzYda?usp=sharing) (I did what I could to integrate this with some Google Drive API but it's just not worth it) and put it in the `artifacts` directory (or however you name it), so it looks like this:
+Then, download the [training data](https://drive.google.com/drive/folders/1fYZ_ROFbDsHSjQvgSXHGQdRHB8DmzYda?usp=sharing) (I did what I could to integrate this with some Google Drive API but it's just too much) and put it in the `artifacts` directory (or however you name it), so it looks like this:
 
 ```
 artifacts/

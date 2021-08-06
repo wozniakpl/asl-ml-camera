@@ -30,7 +30,6 @@ def get_winners(predictions):
 
 def draw_predictions(image, predictions):
     def write(img, x, y, txt):
-        print(f"writing {txt} at ({x},{y})")
         return cv2.putText(
             img,
             txt,
@@ -45,6 +44,7 @@ def draw_predictions(image, predictions):
     (y, x, _) = image.shape  # (480,640,3)
 
     winners = get_winners(predictions)
+    print(winners[0][0], end='', flush=True)
     x_distance = x / 5
     left_margin = 5
     bottom_margin = 5
@@ -84,7 +84,6 @@ def get_predictions(classifier, landmarks):
 
 
 def draw_ml_info(image, predictions):
-    print("drawing predictions", predictions)
     predictions_map = convert_predictions(predictions[0])
     image = draw_predictions(image, predictions_map)
     return image
