@@ -13,7 +13,7 @@ pip3 install -r requirements.txt
 python3 -m asl_ml_camera
 ```
 
-Help should be printed.
+With no args, help should be printed. You need to have `ffmpeg` installed. It's used in the `--cut` step, when movie is split to frames.
 
 Then, download the [training data](https://drive.google.com/drive/folders/1fYZ_ROFbDsHSjQvgSXHGQdRHB8DmzYda?usp=sharing) (I did what I could to integrate this with some Google Drive API but it's just not worth it) and put it in the `artifacts` directory (or however you name it), so it looks like this:
 
@@ -77,3 +77,11 @@ asl_ml_camera -a artifacts --camera
 ```
 
 Close with ESC.
+
+You can call everything at once like this:
+
+```
+asl_ml_camera -a artifacts --cut --frame-rate 5 --mediapipe --dataset --train --camera
+```
+
+The invocation above took around 4 minutes on my PC, when having only movie_1 in artifacts.
