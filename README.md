@@ -70,7 +70,7 @@ Next step is to train the system. This will populate `artifacts/training` with t
 asl_ml_camera -a artifacts --train
 ```
 
-To see the trained classifiers in actions, prepare your USB camera and call:
+To see the trained classifiers in action, prepare your USB camera and call:
 
 ```
 asl_ml_camera -a artifacts --camera
