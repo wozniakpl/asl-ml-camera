@@ -19,7 +19,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url=about["__url__"],
-    packages=find_packages(include=["asl_ml_camera", "asl_ml_camera.*", "asl_ml_camera.tasks", "tasks", "*tasks*"]),
+    packages=find_packages(),
     install_requires=["mediapipe", "ffmpeg", "opencv-python", "scikit-learn"],
     python_requires=">=3.6",
     entry_points={"console_scripts": ["asl_ml_camera = asl_ml_camera.__main__:main"]},
