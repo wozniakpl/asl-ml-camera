@@ -72,7 +72,6 @@ class MediapipeTask:
             movie_output_path = get_existing_path(
                 os.path.join(ml_output_path, os.path.basename(movie))
             )
-            print("Writing to", movie_output_path)
 
             mapping_path = os.path.join(
                 self.artifacts_dir, "movies", os.path.basename(movie), "mapping.json"
