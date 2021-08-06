@@ -24,7 +24,6 @@ def get_mediapipe_info(image):
     results = hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
     if not results.multi_hand_landmarks:
-        print("No handmarks")
         return None, None
 
     annotated_image = image.copy()
@@ -106,10 +105,11 @@ class MediapipeTask:
                     continue
 
                 jpeg_filepath = os.path.join(output_frames_path, frame)
-                print("Saving", jpeg_filepath)
+                print("Saving image", jpeg_filepath)
                 cv2.imwrite(jpeg_filepath, image)
 
                 json_filepath = jpeg_filepath.replace(".jpeg", ".json")
                 with open(f"{json_filepath}", "w") as outfile:
                     data = {"landmarks": landmarks, "letter": letter}
                     json.dump(data, outfile, indent=2)
+                    print("Saving data", outfile)
