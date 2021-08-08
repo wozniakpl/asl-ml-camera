@@ -44,7 +44,7 @@ def draw_predictions(image, predictions):
     (y, x, _) = image.shape  # (480,640,3)
 
     winners = get_winners(predictions)
-    print(winners[0][0], end='', flush=True)
+    print(winners[0][0], end="", flush=True)
     x_distance = x / 5
     left_margin = 5
     bottom_margin = 5
