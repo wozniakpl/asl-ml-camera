@@ -85,7 +85,7 @@ Close with ESC.
 You can call everything at once like this:
 
 ```
-asl_ml_camera -a artifacts --cut --frame-rate 5 --mediapipe --dataset --train --camera
+asl_ml_camera -a artifacts --download --cut --frame-rate 5 --mediapipe --dataset --train --camera
 ```
 
 The invocation above took around 4 minutes on my PC, when having only movie_1 in artifacts.
