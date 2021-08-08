@@ -19,9 +19,7 @@ pip3 install -r requirements.txt
 python3 -m asl_ml_camera <args>
 ```
 
-With no args, help should be printed. You need to have `ffmpeg` installed. It's used in the `--cut` step, when movie is split to frames.
-
-Then, download the [training data](https://drive.google.com/drive/folders/1fYZ_ROFbDsHSjQvgSXHGQdRHB8DmzYda?usp=sharing) (I did what I could to integrate this with some Google Drive API but it's just too much) and put it in the `artifacts` directory (or however you name it), so it looks like this:
+With no args, help should be printed. You need `git` to get the input for ML on the `--download` step. It downloads the movies from another repository, so this one wouldn't be that large. It's available [here](https://github.com/wozniakpl/asl-movies). Also, you need to have `ffmpeg` installed. It's used in the `--cut` step, when movie is split to frames.
 
 ```
 artifacts/
@@ -91,3 +89,7 @@ asl_ml_camera -a artifacts --cut --frame-rate 5 --mediapipe --dataset --train --
 ```
 
 The invocation above took around 4 minutes on my PC, when having only movie_1 in artifacts.
+
+# Development
+
+To run all tests, lints etc. use: `tox`. To see what it does, check out `tox.ini`.
