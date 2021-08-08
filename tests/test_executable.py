@@ -2,8 +2,8 @@ import os
 import tempfile
 import shutil
 from contextlib import contextmanager
+import pytest
 from tests.utils import run_successfully
-
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -28,8 +28,12 @@ def test_drawing_help(app):
     _ = run_successfully(app.help())
 
 
+def artifacts(path):
+    return os.path.join(HERE, "artifacts", path)
+
+
 def test_cutting_videos(app):
-    artifacts_dir = os.path.join(HERE, "artifacts", "cutting")
+    artifacts_dir = artifacts("cutting")
 
     with temporary_dir_copy(artifacts_dir) as copy:
         assert os.path.exists(os.path.join(copy, "movies", "movie_1", "m-1.mov"))
@@ -43,7 +47,7 @@ def test_cutting_videos(app):
 
 
 def test_getting_mediapipe_info_from_image(app):
-    artifacts_dir = os.path.join(HERE, "artifacts", "mediapipe")
+    artifacts_dir = artifacts("mediapipe")
 
     with temporary_dir_copy(artifacts_dir) as copy:
         assert os.path.exists(
@@ -62,7 +66,7 @@ def test_getting_mediapipe_info_from_image(app):
 
 
 def test_creating_training_set(app):
-    artifacts_dir = os.path.join(HERE, "artifacts", "dataset")
+    artifacts_dir = artifacts("dataset")
     with temporary_dir_copy(artifacts_dir) as copy:
         assert os.path.exists(
             os.path.join(copy, "landmarks", "movie_1", "m-1", "0001.json")
@@ -98,7 +102,7 @@ def ensure_directory_does_not_exist(path):
 
 
 def test_training_classifiers(app):
-    artifacts_dir = os.path.join(HERE, "artifacts", "training")
+    artifacts_dir = artifacts("training")
     with temporary_dir_copy(artifacts_dir) as copy:
         assert os.path.exists(os.path.join(copy, "dataset", "full.csv"))
         ensure_directory_does_not_exist(os.path.join(copy, "training"))
@@ -109,3 +113,13 @@ def test_training_classifiers(app):
         assert os.path.exists(os.path.join(copy, "training", "rfc.json"))
         assert os.path.exists(os.path.join(copy, "training", "gnb.pkl"))
         assert os.path.exists(os.path.join(copy, "training", "gnb.json"))
+
+
+@pytest.mark.skip(reason="Should be marked as 'slow' and triggered explicitly")
+def test_downloading_data(app):
+    artifacts_dir = artifacts("downloading")
+    with temporary_dir_copy(artifacts_dir) as copy:
+        _ = run_successfully(app.artifacts(copy).download())
+
+        assert os.path.exists(os.path.join(copy, "movies", "movie_1"))
+        assert os.path.exists(os.path.join(copy, "movies", "movie_2"))
