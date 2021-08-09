@@ -93,7 +93,7 @@ class MediapipeTask:
             )
             video_number = get_video_number(frames_directory)
             letter = mapping[video_number]
-            for frame in frames:
+            for frame in frames: # TODO: multithreaded
                 frame_path = os.path.join(frames_directory, frame)
                 print("Processing", frame_path)
 

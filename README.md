@@ -90,6 +90,12 @@ asl_ml_camera -a artifacts --download --cut --frame-rate 5 --mediapipe --dataset
 
 The invocation above took around 4 minutes on my PC, when having only movie_1 in artifacts.
 
+That's me spelling 'hey' in ASL:
+
+![Letter H](demo/H.png) ![Letter E](demo/E.png) ![Letter Y](demo/Y.png) |
+
+By using only one classifier (RFC), I was able to recognize what I was showing on the camera. More will come, when the combined classification will be implemented.
+
 # Development
 
 To run all tests, lints etc. use: `tox`. To see what it does, check out `tox.ini`.
